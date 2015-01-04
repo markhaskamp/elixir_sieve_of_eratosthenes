@@ -12,8 +12,12 @@ defmodule Sieve do
       first >= n -> Enum.reverse(primes) ++ list
       true -> _primes([first | primes],
                       n, 
-                      Enum.filter(tl(list), &(rem(&1, first) != 0)))
+                      Enum.filter(tl(list), &(is_not_a_multiple(&1, first))))
     end
 
+  end
+
+  def is_not_a_multiple(m,n) do
+    rem(m,n) != 0
   end
 end
